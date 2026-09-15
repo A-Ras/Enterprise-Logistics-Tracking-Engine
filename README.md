@@ -1,5 +1,5 @@
 
-```markdown
+
 # 📦 Fleet & Logistics Event Tracking Engine
 
 Ein modernes, Cloud-fähiges Backend-System zur Echtzeit-Sendungsverfolgung und asynchronen Event-Verarbeitung für Logistik- und E-Commerce-Netzwerke.
@@ -120,5 +120,5 @@ Das beiliegende `Dockerfile` nutzt ein optimiertes Multi-Stage-Verfahren:
 docker build -t tracking-service:latest .
 docker run -p 8080:8080 tracking-service:latest
 ```
-```
+
 
