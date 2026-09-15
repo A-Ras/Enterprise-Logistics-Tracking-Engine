@@ -1,0 +1,38 @@
+### 1. Neue Sendung anlegen
+POST http://localhost:8080/api/v1/shipments
+Content-Type: application/json
+
+{
+  "trackingNumber": "HH-2026-X99",
+  "senderCity": "Hamburg Hafen",
+  "recipientCity": "Berlin Hauptbahnhof"
+}
+
+### 2. Sendung abrufen
+GET http://localhost:8080/api/v1/shipments/HH-2026-X99
+
+### 3. Erstes Scan-Event registrieren (Paket im Verteilzentrum)
+POST http://localhost:8080/api/v1/shipments/HH-2026-X99/events
+Content-Type: application/json
+
+{
+  "idempotencyKey": "scanner-live-success-0012",
+  "location": "Verteilzentrum Hamburg Süd",
+  "status": "IN_TRANSIT",
+  "note": "Erfolgreich über Förderband gelaufen"
+}
+
+### 4. Idempotenz-Test (GENAU DASELBE Event noch einmal abschicken!)
+# Ergebnis: Sollte HTTP 200 liefern, aber das Event NICHT doppelt in die DB schreiben!
+POST http://localhost:8080/api/v1/shipments/HH-2026-X99/events
+Content-Type: application/json
+
+{
+  "idempotencyKey": "scanner-live-success-0012",
+  "location": "Verteilzentrum Hamburg Süd",
+  "status": "IN_TRANSIT",
+  "note": "Erfolgreich über Förderband gelaufen"
+}
+
+### 5. Fehler-Test: Nicht existierende Sendung abrufen (Prüft RFC 7807)
+GET http://localhost:8080/api/v1/shipments/DOES-NOT-EXIST

@@ -1,0 +1,29 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Code auschecken
+        uses: actions/checkout@v4
+
+      - name: Java 21 einrichten
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: maven
+
+      # GitHub Actions hat Docker vorinstalliert -> Testcontainers läuft automatisch!
+      - name: Tests ausführen (Unit- & Testcontainers-Integrationstests)
+        run: ./mvnw clean verify -B
+
+      - name: Docker Image bauen (Build-Prüfung)
+        run: docker build -t logitrack/tracking-service:latest .
