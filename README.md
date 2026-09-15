@@ -1,28 +1,9 @@
-Gerne, ganz entspannt und Schritt für Schritt!
-
----
-
-### Schritt 1: Datei in IntelliJ anlegen
-
-1. Mache in IntelliJ einen **Rechtsklick ganz oben auf den Projektnamen** (deinen Hauptordner `tracking-service`).
-2. Wähle: **New $\rightarrow$ File**.
-3. Gib als Dateinamen exakt ein:
-   ```text
-   README.md
-   ```
-   *(Drücke Enter. Wenn IntelliJ fragt, ob die Datei zu Git hinzugefügt werden soll, klicke auf "Add" bzw. "OK").*
-
----
-
-### Schritt 2: Inhalt einfügen
-
-Kopiere den folgenden Block (über den Copy-Button oben rechts am Kasten) und füge ihn **1:1** in deine leere `README.md` ein:
 
 ```markdown
 # 📦 Fleet & Logistics Event Tracking Engine
 
 Ein modernes, Cloud-fähiges Backend-System zur Echtzeit-Sendungsverfolgung und asynchronen Event-Verarbeitung für Logistik- und E-Commerce-Netzwerke.
-
+[![CI Pipeline](https://github.com/A-Ras/logistics-tracking-service/actions/workflows/ci.yml/badge.svg)](https://github.com/A-Ras/logistics-tracking-service/actions)
 ![Java](https://img.shields.io/badge/Java-21-orange?logo=openjdk)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.3+-brightgreen?logo=springboot)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-blue?logo=postgresql)
