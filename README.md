@@ -120,6 +120,5 @@ Das beiliegende `Dockerfile` nutzt ein optimiertes Multi-Stage-Verfahren:
 docker build -t tracking-service:latest .
 docker run -p 8080:8080 tracking-service:latest
 ```
-
-
+```
 
