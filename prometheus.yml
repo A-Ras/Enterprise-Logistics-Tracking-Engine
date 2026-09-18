@@ -1,0 +1,9 @@
+global:
+  scrape_interval: 2s     # Alle 2 Sekunden neue Daten abholen
+
+scrape_configs:
+  - job_name: 'spring-tracking-service'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      # 'host.docker.internal' erlaubt dem Docker-Container, deine auf Windows laufende App (Port 8080) zu erreichen
+      - targets: ['host.docker.internal:8080']

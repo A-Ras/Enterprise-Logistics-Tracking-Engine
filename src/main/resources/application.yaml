@@ -2,6 +2,10 @@ spring:
   application:
     name: tracking-service
 
+  servlet:
+    multipart:
+      enabled: false
+
   datasource:
     url: jdbc:postgresql://localhost:5433/tracking_db
     username: postgres
@@ -31,4 +35,10 @@ management:
   endpoints:
     web:
       exposure:
-        include: health,info
+        include: health,info,prometheus,metrics
+  endpoint:
+    prometheus:
+      access: unrestricted
+    health:
+      show-details: always
+
